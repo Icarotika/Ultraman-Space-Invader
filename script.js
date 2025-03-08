@@ -2,11 +2,15 @@ const game = document.getElementById("game");
 const player = document.getElementById("player");
 const scoreDisplay = document.getElementById("score");
 
+const leftBtn = document.getElementById("leftBtn");
+const rightBtn = document.getElementById("rightBtn");
+const shootBtn = document.getElementById("shootBtn");
+
 let playerX = game.clientWidth / 2 - 20;
 let score = 0;
 let moveLeft = false, moveRight = false;
 
-// Movimentação do jogador
+// Movimentação do jogador (Teclado)
 document.addEventListener("keydown", (event) => {
     if (event.key === "ArrowLeft") moveLeft = true;
     if (event.key === "ArrowRight") moveRight = true;
@@ -17,20 +21,20 @@ document.addEventListener("keyup", (event) => {
     if (event.key === "ArrowRight") moveRight = false;
 });
 
-// Movimentação para toque na tela (mobile)
-game.addEventListener("touchmove", (event) => {
-    let touchX = event.touches[0].clientX - game.offsetLeft;
-    playerX = Math.max(0, Math.min(game.clientWidth - 40, touchX - 20));
-    player.style.left = `${playerX}px`;
-});
+// Movimentação para Mobile (Botões)
+leftBtn.addEventListener("touchstart", () => moveLeft = true);
+leftBtn.addEventListener("touchend", () => moveLeft = false);
 
-game.addEventListener("touchstart", shoot);
+rightBtn.addEventListener("touchstart", () => moveRight = true);
+rightBtn.addEventListener("touchend", () => moveRight = false);
+
+shootBtn.addEventListener("touchstart", shoot);
 
 // Disparo do laser
 function shoot() {
     let laser = document.createElement("div");
     laser.classList.add("laser");
-    laser.style.left = `${playerX + 1}px`;
+    laser.style.left = `${playerX + 17}px`;
     laser.style.bottom = "40px";
     game.appendChild(laser);
 
