@@ -21,7 +21,7 @@ body {
     width: 90vw;
     max-width: 600px;
     height: 400px;
-    background-image: url("/images/space.png");
+    background: #111;
     border: 2px solid white;
     overflow: hidden;
 }
@@ -33,7 +33,7 @@ body {
     transform: translateX(-50%);
     width: 40px;
     height: 40px;
-    background-image: url("/images/image.png");
+    background: blue;
     border-radius: 50%;
 }
 
@@ -41,17 +41,48 @@ body {
     position: absolute;
     width: 5px;
     height: 20px;
-    background: cyan;
+    background: yellow;
 }
 
 .asteroid {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    background-image: url("/images/asteroid.png");
+    width: 30px;
+    height: 30px;
+    background: red;
+    border-radius: 50%;
 }
 
 #score {
     margin-top: 10px;
     font-size: 18px;
+}
+
+/* Controles para Mobile */
+#controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+#controls button {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    cursor: pointer;
+}
+
+#controls button:active {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Esconder os controles no desktop */
+@media (min-width: 768px) {
+    #controls {
+        display: none;
+    }
 }
