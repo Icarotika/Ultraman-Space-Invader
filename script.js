@@ -34,7 +34,7 @@ shootBtn.addEventListener("touchstart", shoot);
 function shoot() {
     let laser = document.createElement("div");
     laser.classList.add("laser");
-    laser.style.left = `${playerX + 17}px`;
+    laser.style.left = `${playerX + 1}px`;
     laser.style.bottom = "40px";
     game.appendChild(laser);
 
