@@ -3,26 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Space Shooter</title>
+    <title>Ultra Space Invaders</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/images/favicon/favicon.svg" />
     <link rel="shortcut icon" href="/images/favicon/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="Ultraman" />
+    <meta name="apple-mobile-web-app-title" content="Ultra Space Invaders" />
     <link rel="manifest" href="/images/favicon/site.webmanifest" />
+    <!-- Adicionando meta tags para melhor acessibilidade e SEO -->
+    <meta name="description" content="Jogo Space Invaders com múltiplos inimigos e chefões">
+    <meta name="theme-color" content="#000000">
 </head>
 <body>
-    <div id="game">
-        <div id="player"></div>
-    </div>
-    <p id="score">Pontuação: 0</p>
+    <!-- Adicionando estrutura mais acessível com landmarks e ARIA -->
+    <header>
+        <h1>Ultra Space Invaders</h1>
+    </header>
+    
+    <main>
+        <div id="game-container">
+            <div id="game" role="application" aria-label="Área do jogo Space Invaders">
+                <div id="player" role="img" aria-label="Nave do jogador"></div>
+                <div id="stars"></div>
+            </div>
+            
+            <div id="ui-overlay">
+                <div id="score" aria-live="polite">Pontuação: 0</div>
+                <div id="level" aria-live="polite">Nível: 1</div>
+                <div id="lives" aria-live="polite">Vidas: 3</div>
+                <div id="boss-health" style="display: none;" aria-live="polite">
+                    <div class="boss-health-bar">
+                        <div id="boss-health-fill"></div>
+                    </div>
+                    <span>Chefão</span>
+                </div>
+            </div>
+        </div>
 
-    <!-- Controles para Mobile -->
-    <div id="controls">
-        <button id="leftBtn">⬅️</button>
-        <button id="shootBtn">🔥</button>
-        <button id="rightBtn">➡️</button>
+        <!-- Melhorando controles mobile com melhor acessibilidade -->
+        <div id="controls" role="group" aria-label="Controles do jogo">
+            <button id="leftBtn" aria-label="Mover para esquerda" type="button">
+                <span aria-hidden="true">⬅️</span>
+            </button>
+            <button id="shootBtn" aria-label="Atirar" type="button">
+                <span aria-hidden="true">🚀</span>
+            </button>
+            <button id="rightBtn" aria-label="Mover para direita" type="button">
+                <span aria-hidden="true">➡️</span>
+            </button>
+        </div>
+
+        <!-- Adicionando tela de game over e menu inicial -->
+        <div id="game-over" style="display: none;" role="dialog" aria-labelledby="game-over-title">
+            <h2 id="game-over-title">Game Over!</h2>
+            <p id="final-score">Pontuação Final: 0</p>
+            <button id="restart-btn" type="button">Jogar Novamente</button>
+        </div>
+
+        <div id="start-screen" role="dialog" aria-labelledby="start-title">
+            <h2 id="start-title">Ultra Space Invaders</h2>
+            <p>Use as setas para mover e espaço para atirar</p>
+            <p>Derrote diferentes tipos de inimigos e enfrente chefões!</p>
+            <button id="start-btn" type="button">Iniciar Jogo</button>
+        </div>
+    </main>
+
+    <!-- Adicionando instruções para acessibilidade -->
+    <div id="instructions" style="display: none;">
+        <h3>Instruções:</h3>
+        <ul>
+            <li>Setas esquerda/direita ou botões: mover nave</li>
+            <li>Barra de espaço ou botão de tiro: atirar</li>
+            <li>Derrote inimigos para ganhar pontos</li>
+            <li>Enfrente chefões a cada 5 níveis</li>
+        </ul>
     </div>
 
     <script src="script.js"></script>
